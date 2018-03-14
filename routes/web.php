@@ -11,7 +11,7 @@
 |
 */
 
-Route::group(['prefix' => 'admin', 'namespace' => 'admin'], function (){
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function (){
     Route::group(['prefix' => 'admin'], function (){
         Route::get('/list', 'AdminUserController@index');
         Route::get('/add', 'AdminUserController@add');
@@ -32,4 +32,5 @@ Route::group(['prefix' => 'admin', 'namespace' => 'admin'], function (){
         Route::get('/list', 'PostController@index');
         Route::get('/delete/{id}', 'PostController@delete');
     });
+    Route::get('/login', 'LoginController@login');
 });
