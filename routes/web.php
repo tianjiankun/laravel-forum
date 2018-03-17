@@ -10,8 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Illuminate\Support\Facades\Auth;
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function (){
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admin.auth'], function (){
+    Route::get('/', function() {
+        echo "welcome";
+    });
     Route::group(['prefix' => 'admin'], function (){
         Route::get('/list', 'AdminUserController@index');
         Route::get('/add', 'AdminUserController@add');
@@ -33,4 +37,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function (){
         Route::get('/delete/{id}', 'PostController@delete');
     });
     Route::get('/login', 'LoginController@login');
+});
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function (){
+    Route::get('/login', 'LoginController@index');
+});
+Route::group(['namespace' => 'Auth', 'prefix' => 'auth'], function () {
+    // 后台登录
+    Route::group(['prefix' => 'admin'], function () {
+        Route::post('login', 'AdminController@login');
+    });
 });

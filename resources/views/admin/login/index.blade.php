@@ -8,9 +8,12 @@
     <title>Document</title>
 </head>
 <body>
+<form action="{{ url('auth/admin/login') }}" method="post">
 账号:
-<input type="text" name="user_name">
+<input type="text" name="login_name">
 密码:
 <input type="password" name="password">
+    <button type="submit">登录</button>
+</form>
 </body>
 </html>
