@@ -12,10 +12,8 @@
 */
 use Illuminate\Support\Facades\Auth;
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admin.auth'], function (){
-    Route::get('/', function() {
-        echo "welcome";
-    });
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'/*, 'middleware' => 'admin.auth'*/], function (){
+    Route::get('/', 'IndexController@index');
     Route::group(['prefix' => 'admin'], function (){
         Route::get('/list', 'AdminUserController@index');
         Route::get('/add', 'AdminUserController@add');
