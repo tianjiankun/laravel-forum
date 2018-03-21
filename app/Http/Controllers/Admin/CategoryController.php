@@ -14,7 +14,7 @@ class CategoryController extends Controller
         $list = Category::orderBy('sort', 'asc')
             ->get();
         $assign = compact('list');
-        return view('admin.category.list', $assign);
+        return view('admin.category.index', $assign);
     }
 
     public function add()
