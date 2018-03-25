@@ -10,7 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-use Illuminate\Support\Facades\Auth;
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'/*, 'middleware' => 'admin.auth'*/], function (){
     Route::get('/', 'IndexController@index');
@@ -29,6 +28,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'/*, 'middleware' => 'ad
         Route::get('/edit/{id}', 'CategoryController@edit');
         Route::post('/update/{id}', 'CategoryController@update');
         Route::get('/delete/{id}', 'CategoryController@delete');
+        Route::get('/restore/{id}', 'CategoryController@restore');
+        Route::get('/force_delete/{id}', 'CategoryController@forceDelete');
     });
     Route::group(['prefix' => 'post'], function (){
         Route::get('/list', 'PostController@index');

@@ -24,13 +24,19 @@
                     <td>{{ $v->keyword }}</td>
                     <td>{{ $v->description }}</td>
                     <td>
-                        <a href="{{ url('admin/category/edit', [$v->id]) }}">编辑</a> |
+                        <a href="{{ url('admin/category/edit', [$v->id]) }}" class="btn btn-primary btn-xs">编辑</a> |
                         @if(is_null($v->deleted_at))
-                            <a href="javascript:if(confirm('确定要删除吗?')) location='{{ url('admin/category/destroy', [$v->id]) }}'">删除</a>
+                            <a class="btn btn-danger btn-xs"
+                               href="javascript:if(confirm('确定要删除吗?'))location='{{ url('admin/category/delete', [$v->id]) }}'">
+                                删除</a>
                         @else
-                            <a href="javascript:if(confirm('确认恢复?'))location.href='{{ url('admin/category/restore', [$v->id]) }}'">恢复</a>
+                            <a class="btn btn-warning btn-xs"
+                               href="javascript:if(confirm('确认恢复?'))location.href='{{ url('admin/category/restore', [$v->id]) }}'">
+                                恢复</a>
                             |
-                            <a href="javascript:if(confirm('彻底删除?'))location.href='{{ url('admin/category/forceDelete', [$v->id]) }}'">彻底删除</a>
+                            <a class="btn btn-danger btn-xs"
+                               href="javascript:if(confirm('彻底删除?'))location.href='{{ url('admin/category/force_delete', [$v->id]) }}'">
+                                彻底删除</a>
                         @endif
                     </td>
                 </tr>
