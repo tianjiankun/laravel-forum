@@ -6,12 +6,20 @@
 
 @section('description', '分类管理')
 
+@section('css')
+    <style>
+        .k-m-w-50{
+            max-width:50px;
+        }
+    </style>
+@endsection
 @section('content')
     <form action="{{ url('admin/category/sort') }}" method="post">
         {{ csrf_field() }}
         <table class="table table-bordered table-striped table-hover table-condensed">
             <tr>
                 <th>id</th>
+                <th><button class="btn btn-dark btn-xs">排序</button></th>
                 <th>分类名</th>
                 <th>关键字</th>
                 <th>描述</th>
@@ -20,6 +28,7 @@
             @foreach($list as $v)
                 <tr>
                     <td>{{ $v->id }}</td>
+                    <td ><input type="text" value="{{ $v->sort }}" name="{{ $v->id }}" class="am-input-sm k-m-w-50"/></td>
                     <td>{{ $v->name }}</td>
                     <td>{{ $v->keyword }}</td>
                     <td>{{ $v->description }}</td>

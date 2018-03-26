@@ -71,4 +71,18 @@ class CategoryController extends Controller
         $categoryModel->forceDeleteData($map);
         return redirect('admin/category/list');
     }
+
+    public function sort(Request $request, Category $categoryModel)
+    {
+        $data = $request->except('_token');
+        $sortData = [];
+        foreach ($data as $k => $v) {
+            $sortData[] = [
+                'id' => $k,
+                'sort' => $v
+            ];
+        }
+        $categoryModel->updateBatch($sortData);
+        return redirect('admin/category/list');
+    }
 }

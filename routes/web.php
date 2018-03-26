@@ -30,6 +30,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'/*, 'middleware' => 'ad
         Route::get('/delete/{id}', 'CategoryController@delete');
         Route::get('/restore/{id}', 'CategoryController@restore');
         Route::get('/force_delete/{id}', 'CategoryController@forceDelete');
+        Route::post('/sort', 'CategoryController@sort');
     });
     Route::group(['prefix' => 'post'], function (){
         Route::get('/list', 'PostController@index');
