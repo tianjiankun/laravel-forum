@@ -6,6 +6,7 @@
                 <a><i class="fa fa-columns"></i> 分类管理 <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li><a href="{{ url('admin/category/list') }}">分类列表</a></li>
+                    <li><a href="{{ url('admin/category/add') }}">添加分类</a></li>
                 </ul>
             </li>
         </ul>
