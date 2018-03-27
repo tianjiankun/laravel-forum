@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\Category\StoreRequest;
+use App\Http\Requests\Category\UpdateRequest;
 use App\Libraries\AdminMessage;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -31,14 +33,14 @@ class CategoryController extends Controller
         return view('admin.category.edit', $assign);
     }
 
-    public function store(Request $request, Category $categoryModel)
+    public function store(StoreRequest $request, Category $categoryModel)
     {
         $data = $request->except('_token');
         $categoryModel->storeData($data);
         return redirect('admin/category/list');
     }
 
-    public function update($id, Request $request, Category $categoryModel)
+    public function update($id, UpdateRequest $request, Category $categoryModel)
     {
         $data = $request->except('_token');
         $categoryModel->updateData($id, $data);
