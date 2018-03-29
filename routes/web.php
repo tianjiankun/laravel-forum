@@ -34,6 +34,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'/*, 'middleware' => 'ad
     });
     Route::group(['prefix' => 'post'], function (){
         Route::get('/list', 'PostController@index');
+        Route::get('/top/{id}', 'PostController@top');
+        Route::get('/essence/{id}', 'PostController@essence');
         Route::get('/delete/{id}', 'PostController@delete');
     });
     Route::get('/login', 'LoginController@login');

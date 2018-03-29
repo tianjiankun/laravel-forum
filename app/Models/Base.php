@@ -73,4 +73,14 @@ class Base extends Model
         return $result;
 
     }
+
+    //通用提示
+    public function flashMessage($result)
+    {
+        if ($result) {
+            flash_message(AdminMessage::SUCCESS);
+        } else {
+            flash_message(AdminMessage::ERROR, false);
+        }
+    }
 }

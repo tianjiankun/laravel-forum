@@ -15,4 +15,6 @@ class AdminMessage
     const RESTORE = "恢复成功";
     const RESTORE_F = "恢复失败";
     const NOT_FOUND = "找不到数据";
+    const SUCCESS = '操作成功';
+    const ERROR = '操作失败';
 }
