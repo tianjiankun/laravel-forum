@@ -10,7 +10,7 @@ class AdminUserController extends Controller
 {
     public function index()
     {
-        $list = AdminUser::where('is_seal',0)
+        $list = AdminUser::withTrashed()
             ->get();
         $assign = compact('list');
         return view('admin.admin-user.index', $assign);
@@ -25,7 +25,7 @@ class AdminUserController extends Controller
     {
         $data = $request->all();
         $adminUserModel->storeData($data);
-        return redirect('admin/admin-user/index');
+        return redirect('admin/admin_user/list');
     }
 
     public function edit($id)
@@ -39,7 +39,7 @@ class AdminUserController extends Controller
     {
         $data = $request->all();
         $adminUserModel->updateData($id, $data);
-        return redirect('admin/admin-user/index');
+        return redirect('admin/admin_user/list');
     }
 
     public function delete($id, AdminUser $adminUserModel)
@@ -48,6 +48,24 @@ class AdminUserController extends Controller
             'id' => $id
         ];
         $adminUserModel->deleteData($map);
-        return redirect('admin/admin-user/index');
+        return redirect('admin/admin_user/list');
+    }
+
+    public function restore($id, AdminUser $adminUserModel)
+    {
+        $map = [
+            'id' => $id
+        ];
+        $adminUserModel->restoreData($map);
+        return redirect('admin/admin_user/list');
+    }
+
+    public function forceDelete($id, AdminUser $adminUserModel)
+    {
+        $map = [
+            'id' => $id
+        ];
+        $adminUserModel->forceDeleteData($map);
+        return redirect('admin/admin_user/list');
     }
 }

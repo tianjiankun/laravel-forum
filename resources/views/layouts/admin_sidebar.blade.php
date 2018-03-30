@@ -15,6 +15,13 @@
                     <li><a href="{{ url('admin/post/list') }}">帖子列表</a></li>
                 </ul>
             </li>
+            <li>
+                <a><i class="fa fa-columns"></i> 管理员管理 <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="{{ url('admin/admin_user/list') }}">管理员列表</a></li>
+                    <li><a href="{{ url('admin/admin_user/add') }}">添加管理员</a></li>
+                </ul>
+            </li>
         </ul>
     </div>
 </div>

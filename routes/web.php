@@ -13,13 +13,15 @@
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'/*, 'middleware' => 'admin.auth'*/], function (){
     Route::get('/', 'IndexController@index');
-    Route::group(['prefix' => 'admin'], function (){
+    Route::group(['prefix' => 'admin_user'], function (){
         Route::get('/list', 'AdminUserController@index');
         Route::get('/add', 'AdminUserController@add');
         Route::post('/store', 'AdminUserController@store');
         Route::get('/edit/{id}', 'AdminUserController@edit');
         Route::post('/update/{id}', 'AdminUserController@update');
         Route::get('/delete/{id}', 'AdminUserController@delete');
+        Route::get('/restore/{id}', 'AdminUserController@restore');
+        Route::get('/force_delete/{id}', 'AdminUserController@forceDelete');
     });
     Route::group(['prefix' => 'category'], function (){
         Route::get('/list', 'CategoryController@index');

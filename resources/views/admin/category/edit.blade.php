@@ -7,11 +7,6 @@
 @section('description', '修改分类')
 
 @section('css')
-    <style>
-        .k-m-w-50{
-            max-width:50px;
-        }
-    </style>
 @endsection
 @section('content')
     <form class="form-horizontal " action="{{ url('admin/category/update', [$data->id]) }}" method="post">

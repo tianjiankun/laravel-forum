@@ -7,11 +7,6 @@
 @section('description', '分类添加')
 
 @section('css')
-    <style>
-        .k-m-w-50{
-            max-width:50px;
-        }
-    </style>
 @endsection
 @section('content')
     <form class="form-horizontal " action="{{ url('admin/category/store') }}" method="post">
