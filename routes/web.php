@@ -10,6 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['namespace'=>'Home'], function (){
+    Route::get('/', 'IndexController@index');
+});
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'/*, 'middleware' => 'admin.auth'*/], function (){
     Route::get('/', 'IndexController@index');
