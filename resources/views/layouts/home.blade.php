@@ -36,5 +36,11 @@
         </div>
     </div>
 </header>
+
+<div class="container m-t-100">
+    <div class="row">
+    @yield('content')
+    </div>
+</div>
 </body>
 </html>
