@@ -3,27 +3,62 @@
 @section('title','论坛首页')
 
 @section('content')
-    <div class="col-xs-12 col-md-12 col-lg-8">
-        <div class="row t-content">
-            <div class="pull-right">
-                    <span title="回贴数">
-                       3
-                     </span>
-                    <span class="count_seperator">|</span>
-                    <span title="查看数">
-                       3.3k
-                     </span>
+    <!--------贴子列表开始-------->
+    <div class="col-md-9 post-list">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <ul class="list-inline">
+                    <li><a href="" class="action">普通</a></li>
+                    <li><a href="">精华</a></li>
+                    <li><a href="">最近</a></li>
+                </ul>
             </div>
-            <div class="col-xs-12 col-md-12 col-lg-12">
-                <ul class="row">
-                    <li class="col-xs-5 col-md-2 col-lg-3">
-                         tianjiankun
-                    </li>
-                    <li class="col-xs-7 col-md-3 col-lg-3">
-                        自学PHP的程序员们，推荐一本不错的电子书给大家。
-                    </li>
+            <div class="post-preview">
+                <div class="panel-body">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <a href="">我有一本PHP的书籍</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="">我有一本PHP的书籍</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="">我有一本PHP的书籍</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="">我有一本PHP的书籍</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--------帖子列表结束-------->
+    <!--------侧边栏开始-------->
+    <div class="col-md-3 side-bar">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form action="" class="form-inline">
+                    <input type="text" style="float: left">
+                    <input type="submit" class="btn btn-primary" style="float: left">
+                </form>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">
+                七天内最热
+            </div>
+            <div class="panel-body">
+                <ul class="">
+                    <li><a href="">来学PHP吧</a></li>
+                    <li><a href="">来学PHP吧</a></li>
+                    <li><a href="">来学PHP吧</a></li>
+                    <li><a href="">来学PHP吧</a></li>
+                    <li><a href="">来学PHP吧</a></li>
+                    <li><a href="">来学PHP吧</a></li>
                 </ul>
             </div>
         </div>
     </div>
+    <!--------侧边栏结束-------->
 @endsection
