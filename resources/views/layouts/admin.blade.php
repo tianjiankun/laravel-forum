@@ -136,8 +136,6 @@
 
 <!-- Custom Theme Scripts -->
 <script src="{{ asset('statics/build/js/custom.min.js') }}"></script>
-<script>
-    @yield('js')
-</script>
+@yield('js')
 </body>
 </html>

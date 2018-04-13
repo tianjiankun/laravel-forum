@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +14,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer('home/*', function($view) {
+            $category = Category::select('id', 'name')
+                ->get();
+            $assign = [
+                'category' => $category
+            ];
+            $view->with($assign);
+        });
     }
 
     /**

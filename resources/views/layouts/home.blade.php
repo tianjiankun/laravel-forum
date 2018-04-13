@@ -20,12 +20,11 @@
                 <li>
                     <a href="/">首页</a>
                 </li>
+                @foreach($category as $v)
                 <li>
-                    <a href="">PHP</a>
+                    <a class="@if($v->id == 1) t-active @endif" href="">{{ $v->id }}</a>
                 </li>
-                <li>
-                    <a href="">Laravel</a>
-                </li>
+                @endforeach
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
@@ -42,5 +41,17 @@
     @yield('content')
     </div>
 </div>
+<!-- jQuery -->
+<script src="{{ asset('statics/jquery/jquery.min.js') }}"></script>
+<!-- Bootstrap -->
+<script src="{{ asset('statics/bootstrap-3.3.5/js/bootstrap.min.js') }}"></script>
+<!-- FastClick -->
+<script src="{{ asset('statics/fastclick/lib/fastclick.js') }}"></script>
+<!-- NProgress -->
+<script src="{{ asset('statics/nprogress/nprogress.js') }}"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="{{ asset('statics/build/js/custom.min.js') }}"></script>
+@yield('js')
 </body>
 </html>

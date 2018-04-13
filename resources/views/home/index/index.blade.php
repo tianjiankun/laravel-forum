@@ -8,7 +8,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <ul class="list-inline">
-                    <li><a href="" class="action">普通</a></li>
+                    <li><a  id="test" href="#" class="action">普通</a></li>
                     <li><a href="">精华</a></li>
                     <li><a href="">最近</a></li>
                 </ul>
@@ -26,6 +26,7 @@
                                 <span>作者：tianjiankun</span>
                             </div>
                         </li>
+
                         <li class="list-group-item">
                             <a href="">我有一本PHP的书籍</a>
                             <div class="pull-left">
@@ -89,4 +90,6 @@
         </div>
     </div>
     <!--------侧边栏结束-------->
+@endsection
+@section('js')
 @endsection
