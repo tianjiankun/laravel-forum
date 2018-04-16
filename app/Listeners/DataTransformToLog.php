@@ -3,7 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\DataTransForm;
-use Illuminate\Support\Facades\Log;
+use App\Service\Log\Log;
 
 class DataTransformToLog
 {
@@ -27,8 +27,7 @@ class DataTransformToLog
     {
         $data = $event->data;
         $type = $event->type;
-        Log::useDailyFiles(storage_path('logs/operation.log'));
-        Log::notice($data);
-        Log::getMonolog()->popHandler();
+        $path = 'logs/operation.log';
+        Log::write($data, $type, $path);
     }
 }

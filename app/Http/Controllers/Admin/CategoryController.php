@@ -49,28 +49,22 @@ class CategoryController extends Controller
     
     public function delete($id, Category $categoryModel)
     {
-        $map = [
-            'id' => $id
-        ];
-        $categoryModel->deleteData($map);
+        $category = Category::find($id);
+        $category->delete();
         return redirect('admin/category/list');
     }
     
     public function restore($id, Category $categoryModel)
     {
-        $map = [
-            'id' => $id
-        ];
-        $categoryModel->restoreData($map);
+        $category = Category::onlyTrashed()->find($id);
+        $category->restore();
         return redirect('admin/category/list');
     }
 
     public function forceDelete($id, Category $categoryModel)
     {
-        $map = [
-            'id' => $id
-        ];
-        $categoryModel->forceDeleteData($map);
+        $category = Category::onlyTrashed()->find($id);
+        $category->forceDelete();
         return redirect('admin/category/list');
     }
 
