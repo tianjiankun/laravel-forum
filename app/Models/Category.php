@@ -24,7 +24,7 @@ class Category extends Base
     public function updateData($id, $data)
     {
         try {
-            $category = Category::find($id);
+            $category = Category::withTrashed()->find($id);
             $this->saveData($category, $data);
             flash_message(AdminMessage::EDIT);
         } catch (\Throwable $e) {

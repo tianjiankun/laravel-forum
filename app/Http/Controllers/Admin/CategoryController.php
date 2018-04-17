@@ -28,7 +28,7 @@ class CategoryController extends Controller
 
     public function edit($id)
     {
-        $data = Category::find($id);
+        $data = Category::withTrashed()->find($id);
         $assign = compact('data');
         return view('admin.category.edit', $assign);
     }
@@ -47,21 +47,21 @@ class CategoryController extends Controller
         return redirect('admin/category/list');
     }
     
-    public function delete($id, Category $categoryModel)
+    public function delete($id)
     {
         $category = Category::find($id);
         $category->delete();
         return redirect('admin/category/list');
     }
     
-    public function restore($id, Category $categoryModel)
+    public function restore($id)
     {
         $category = Category::onlyTrashed()->find($id);
         $category->restore();
         return redirect('admin/category/list');
     }
 
-    public function forceDelete($id, Category $categoryModel)
+    public function forceDelete($id)
     {
         $category = Category::onlyTrashed()->find($id);
         $category->forceDelete();

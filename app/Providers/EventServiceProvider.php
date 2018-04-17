@@ -31,7 +31,8 @@ class EventServiceProvider extends ServiceProvider
         parent::boot();
         Category::updated(function (Category $category){
             $data = $category->getOriginal();
-            Event::fire(new DataTransform($data, '修改分类'));
+            $type = $data['deleted_at'] && $category->deleted_at ? '修改分类' : '恢复被软删除的分类数据';
+            Event::fire(new DataTransform($data, $type ?? '修改分类'));
         });
         Category::deleted(function (Category $category){
             $data = $category->getOriginal();
@@ -40,9 +41,6 @@ class EventServiceProvider extends ServiceProvider
         });
         Category::creating(function (Category $category){
             Event::fire(new DataTransform($category->toArray(), '添加分类'));
-        });
-        Category::restored(function (Category $category){
-            Event::fire(new DataTransform($category->toArray(), '恢复分类'));
         });
     }
 }
