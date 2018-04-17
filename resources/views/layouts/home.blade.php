@@ -18,19 +18,17 @@
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="/">首页</a>
+                    <a class="@if(! Request::get('cid') ) t-active @endif" href="/">首页</a>
                 </li>
                 @foreach($category as $v)
                 <li>
-                    <a class="@if($v->id == 1) t-active @endif" href="">{{ $v->id }}</a>
+                    <a class="@if($v->id == Request::get('cid') ) t-active @endif" href="{{ url('/category?cid='.$v->id) }}">{{ $v->name }}</a>
                 </li>
                 @endforeach
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <div></div>
-                    <a href="">登录</a>
-                </li>
+                <a href="" class="btn btn-default nav-btn">登录</a>
+                <a href="{{ url('/personal') }}" class="btn btn-default nav-btn">个人中心</a>
             </ul>
         </div>
     </div>
