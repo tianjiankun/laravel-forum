@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Libraries\AdminMessage;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Http\Request;
 
 class Post extends Base
 {
@@ -21,12 +22,25 @@ class Post extends Base
         return $this->hasMany(Reply::class,'post_id', 'id');
     }
 
-    public function getPostList($arr)
+    public function getPostList(Request $request)
     {
-        $postList = $this->with('user')
-            ->withTrashed()
-            ->get();
-        return $postList;
+        $id = $request->input('id');
+        $username = $request->input('username');
+        $title = $request->input('title');
+        $post = $this->with([
+            'user'=>function($query) use ($username){
+                if ($username) {
+                    $query->where('nickname', $username);
+                }
+            }])
+            ->withTrashed();
+        if ($id) {
+            $post->where('id', $id);
+        } else if ($title) {
+            $post->where('title', $title);
+        }
+        $list = $post->paginate(10);
+        return $list;
     }
 
     public function top($id, $type)

@@ -19,17 +19,18 @@
         <div class="form-inline">
             <div class="form-group">
                 <label for="exampleInputName2">ID:</label>
-                <input type="text" class="form-control" name="id" placeholder="输入帖子编号">
+                <input type="text" class="form-control" value="{{ Request::get('id') }}" name="id" placeholder="输入帖子编号">
             </div>
             <div class="form-group">
                 <label for="exampleInputName2">用户名:</label>
-                <input type="text" class="form-control" name="username" placeholder="张三">
+                <input type="text" class="form-control" value="{{ Request::get('username') }}" name="username" placeholder="张三">
             </div>
             <div class="form-group">
                 <label for="exampleInputName2">标题:</label>
-                <input type="text" class="form-control" name="title" placeholder="输入标题">
+                <input type="text" class="form-control" name="title" value="{{ Request::get('title') }}" placeholder="输入标题">
             </div>
             <button type="submit" class="btn btn-default">搜索</button>
+            <button type="reset" class="btn btn-default">重置</button>
         </div>
     </form>
     <hr>
@@ -46,6 +47,7 @@
                 <th>操作</th>
             </tr>
             @foreach($list as $v)
+                @if($v->user)
                 <tr>
                     <td>{{ $v->id }}</td>
                     <td ><input type="text" value="{{ $v->sort }}" name="{{ $v->id }}" class="am-input-sm k-m-w-50"/></td>
@@ -81,7 +83,7 @@
                         @endif
                     </td>
                 </tr>
-
+                @endif()
             @endforeach
         </table>
     </form>

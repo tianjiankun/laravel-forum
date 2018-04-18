@@ -10,8 +10,7 @@ class PostController extends Controller
 {
     public function index(Request $request, Post $postModel)
     {
-        $arr = $request->all();
-        $list = $postModel->getPostList($arr);
+        $list = $postModel->getPostList($request);
         $assign = compact('list');
         return view('admin.post.index', $assign);
     }
