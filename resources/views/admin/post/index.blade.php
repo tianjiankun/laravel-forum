@@ -14,11 +14,30 @@
     </style>
 @endsection
 @section('content')
+    <hr>
+    <form action="">
+        <div class="form-inline">
+            <div class="form-group">
+                <label for="exampleInputName2">ID:</label>
+                <input type="text" class="form-control" name="id" placeholder="输入帖子编号">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputName2">用户名:</label>
+                <input type="text" class="form-control" name="username" placeholder="张三">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputName2">标题:</label>
+                <input type="text" class="form-control" name="title" placeholder="输入标题">
+            </div>
+            <button type="submit" class="btn btn-default">搜索</button>
+        </div>
+    </form>
+    <hr>
     <form action="{{ url('admin/post/sort') }}" method="post">
         {{ csrf_field() }}
         <table class="table table-bordered table-striped table-hover table-condensed">
             <tr>
-                <th>id</th>
+                <th>编号</th>
                 <th><button class="btn btn-dark btn-xs">排序</button></th>
                 <th>发帖人</th>
                 <th>标题</th>
