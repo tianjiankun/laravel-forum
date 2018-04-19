@@ -39,10 +39,8 @@ class Post extends Base
             $post->where('id', $id);
         } else if ($title) {
             $post->where('title', $title);
-        } else if ($type == 1) {
-            $post->where('is_essence', 0);
-        } else if ($type == 2) {
-            $post->where('is_essence', 1);
+        } else if ($type) {
+            $post->where('is_essence', $type);
         }
         $list = $post->paginate(10);
         return $list;
