@@ -27,6 +27,7 @@ class Post extends Base
         $id = $request->input('id');
         $username = $request->input('username');
         $title = $request->input('title');
+        $type = $request->input('type');
         $post = $this->with([
             'user'=>function($query) use ($username){
                 if ($username) {
@@ -38,6 +39,10 @@ class Post extends Base
             $post->where('id', $id);
         } else if ($title) {
             $post->where('title', $title);
+        } else if ($type == 1) {
+            $post->where('is_essence', 0);
+        } else if ($type == 2) {
+            $post->where('is_essence', 1);
         }
         $list = $post->paginate(10);
         return $list;

@@ -29,6 +29,18 @@
                 <label for="exampleInputName2">标题:</label>
                 <input type="text" class="form-control" name="title" value="{{ Request::get('title') }}" placeholder="输入标题">
             </div>
+            <div class="form-group">
+                <label for="exampleInputName2">类型:</label>
+                <select class="form-control" name="type">
+                    <option value="">全部</option>
+                    <option value="1"
+                            @if(Request::get('type') == 1 )selected="selected"@endif()
+                    >普通</option>
+                    <option value="2"
+                            @if(Request::get('type') == 2 )selected="selected"@endif()
+                    >精华</option>
+                </select>
+            </div>
             <button type="submit" class="btn btn-default">搜索</button>
             <button type="reset" class="btn btn-default">重置</button>
         </div>
