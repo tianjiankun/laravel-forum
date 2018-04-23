@@ -32,11 +32,35 @@
         </div>
         <div class="panel panel-default">
             <div class="panel-body">
-                <ul class="">
-                    <li><a href="">发布帖子</a></li>
-                    <li><a href="">我的帖子</a></li>
-                    <li><a href="">我回复的帖子</a></li>
-                    <li><a href="">关注的用户</a></li>
+                <ul class="list-group text-center">
+                    <a href="">
+                        <li class="list-group-item person-list">
+                            <i class="text-md fa fa-bullseye margin-3"></i>
+                              点击发布帖子
+                        </li>
+                    </a>
+                    <hr class="no-margin">
+                    <a href="" class="person-list-font">
+                        <li class="list-group-item person-list">
+                            <i class="text-md fa fa-file margin-3"></i>
+                              查看我的帖子
+                        </li>
+                    </a>
+                    <hr class="no-margin">
+                    <a href="" class="person-list-font">
+                        <li class="list-group-item person-list">
+                            <i class="text-md fa fa-comment margin-2"></i>
+                              我回复的帖子
+                        </li>
+                    </a>
+                    <hr class="no-margin">
+                    <a href="" class="person-list-font">
+                        <li class="list-group-item person-list">
+                            <i class="text-md fa fa-eye margin-3"></i>
+                              我关注的用户
+                        </li>
+                    </a>
+                    <hr class="no-margin">
                 </ul>
             </div>
         </div>

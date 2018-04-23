@@ -1,7 +1,6 @@
 body{
     background: #F8F8F8;
 }
-
 .m-t-100{
     margin-top: 100px;
 }
@@ -51,4 +50,23 @@ hr {
 
 .info-btn{
     width: 100%;
+}
+
+.no-margin{
+    margin: 0;
+}
+
+.person-list {
+    display: inline-block;
+    height: inherit;
+    color: #525252;
+    text-decoration: none;
+    border: none;
+}
+.person-list:hover {
+    color: #46b8da;
+}
+
+.margin-3{
+    margin: 3px;
 }
