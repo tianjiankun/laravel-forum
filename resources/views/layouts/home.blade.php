@@ -18,7 +18,7 @@
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li>
-                    <a class="@if(! Request::get('cid') ) t-active @endif" href="/">首页</a>
+                    <a class="@if( isset($cid) && $cid= 'index') t-active @endif" href="/">首页</a>
                 </li>
                 @foreach($category as $v)
                 <li>
