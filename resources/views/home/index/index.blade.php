@@ -14,7 +14,7 @@
                 </ul>
             </div>
             <div class="post-preview">
-                <div class="panel-body" style="padding: 0px">
+                <div class="panel-body t-p-0">
                     <ul class="list-group">
                         <li class="list-group-item">
                             <a href="">我有一本PHP的书籍</a>

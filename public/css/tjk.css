@@ -70,3 +70,11 @@ hr {
 .margin-3{
     margin: 3px;
 }
+
+.panel-default>.panel-heading{
+    background-color: white;
+}
+
+.t-p-0{
+    padding: 0;
+}
