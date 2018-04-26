@@ -13,7 +13,9 @@
 Route::group(['namespace'=>'Home'], function (){
     Route::get('/', 'IndexController@index');
     Route::get('/category', 'IndexController@category');
-    Route::get('/personal/', 'PersonalController@personal');
+    Route::get('/personal', 'PersonalController@personal');
+    Route::get('/personal/release', 'PersonalController@release');
+    Route::post('/personal/uploadImg', 'PersonalController@uploadImg');
 });
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'/*, 'middleware' => 'admin.auth'*/], function (){
