@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Models\Post;
+use App\Models\PostContent;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -19,6 +21,11 @@ class PersonalController extends Controller
         return view('home.personal.release');
     }
 
+    public function releaseHandle(Request $request, Post $post, PostContent $postContent)
+    {
+        $post->release($request, $postContent);
+        return redirect('/');
+    }
     public function uploadImg()
     {
         $result = upload('editormd-image-file', 'uploads/post');

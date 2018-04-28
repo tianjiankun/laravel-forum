@@ -7,6 +7,7 @@
     @include('home.personal.sidebar')
     <div class="col-md-9">
         <form class="form-horizontal " action="{{ url('personal/releaseHandle') }}" method="post">
+            {{ csrf_field() }}
             <tr>
                 <td>
                     <input class="form-control" type="text" name="title" placeholder="请输入标题" value="{{ old('title') }}">
@@ -16,8 +17,8 @@
                 <tr>
                     <td>
                         <select class="form-control" name="category_id">
+                            <option value="">请选择分类</option>
                             @foreach($category as $v)
-                                <option value="">请选择分类</option>
                                 <option value="{{ $v->id }}" @if(old('category_id')) selected="selected" @endif>{{ $v->name }}</option>
                             @endforeach
                         </select>
@@ -40,7 +41,7 @@
                 <tr>
                     <td>
                         <div id="content">
-                            <textarea name="markdown">{{ old('markdown') }}</textarea>
+                            <textarea name="content">{{ old('content') }}</textarea>
                         </div>
                     </td>
                 </tr>
