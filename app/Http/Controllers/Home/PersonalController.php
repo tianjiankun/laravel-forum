@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers\Home;
 
-use App\Models\Post;
-use App\Models\PostContent;
+use App\Service\Post\PostService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -21,9 +20,9 @@ class PersonalController extends Controller
         return view('home.personal.release');
     }
 
-    public function releaseHandle(Request $request, Post $post, PostContent $postContent)
+    public function releaseHandle(Request $request, PostService $postService)
     {
-        $post->release($request, $postContent);
+        $postService->release($request);
         return redirect('/');
     }
     public function uploadImg()

@@ -23,6 +23,10 @@ class Post extends Base
         return $this->hasMany(Reply::class,'post_id', 'id');
     }
 
+    public function content()
+    {
+        return $this->hasOne(PostContent::class, 'post_id', 'id');
+    }
     public function getPostList(Request $request)
     {
         $id = $request->input('id');
@@ -67,24 +71,5 @@ class Post extends Base
         $this->flashMessage($result);
     }
 
-    //发帖
-    public function release(Request $request, PostContent $postContent)
-    {
-        try {
-            $this->category_id = $request->input('category_id');
-            $this->keywords = $request->input('keywords');
-            $this->description = $request->input('description');
-            $this->title = $request->input('title');
-            $this->user_id = Auth::id();
-            $this->save();
-            $postContent->post_id = $this->id;
-            $postContent->content = $request->input('content');
-            $postContent->save();
-            flash_message('发帖成功');
-        } catch (\Throwable $e) {
-            flash_message( $e->getMessage(), false);
-        }
 
-
-    }
 }
