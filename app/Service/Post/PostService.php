@@ -32,4 +32,18 @@ class PostService
             echo  $e->getMessage();
         }
     }
+
+    /**
+     * @param int $n
+     * @return Post
+     */
+    public function getUserPost($n = null)
+    {
+        $post = Post::where('user_id', Auth::id())
+            ->orderBy('created_at', 'desc')
+            ->paginate($n)
+            ->sortByDesc('is_essence')
+            ->sortByDesc('is_top');
+        return $post;
+    }
 }

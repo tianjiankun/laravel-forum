@@ -10,4 +10,9 @@ class User extends Base
     //
     protected $table = 'user';
     use SoftDeletes;
+
+    public function post()
+    {
+        return $this->hasMany(Post::class, 'user_id', 'id');
+    }
 }

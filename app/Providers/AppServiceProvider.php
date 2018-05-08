@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -21,6 +22,9 @@ class AppServiceProvider extends ServiceProvider
                 'category' => $category
             ];
             $view->with($assign);
+        });
+        view()->composer('personal/*', function($view) {
+//            $user = User::where
         });
     }
 

@@ -3,15 +3,19 @@
 namespace App\Http\Controllers\Home;
 
 use App\Service\Post\PostService;
+use App\Service\User\UserService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class PersonalController extends Controller
 {
     //用户个人中心
-    public function personal()
+    public function personal(PostService $postService)
     {
-        return view('home.personal.index');
+        $post = $postService->getUserPost(3);
+        return view('home.personal.index',[
+            'post' => $post
+        ]);
     }
     
     //发帖页面
@@ -23,7 +27,7 @@ class PersonalController extends Controller
     public function releaseHandle(Request $request, PostService $postService)
     {
         $postService->release($request);
-        return redirect('/');
+        return redirect('home/personal/index');
     }
     public function uploadImg()
     {

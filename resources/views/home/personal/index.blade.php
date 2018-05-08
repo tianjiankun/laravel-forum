@@ -15,33 +15,27 @@
             <div class="panel-body" style="padding: 0px">
                 <div class="">
                     <ul class="list-group">
-                        <li class="list-group-item">
-                            <a href="">我有一本PHP的书籍</a>
-                            <div class="pull-left">
-                                <button type="button" class="btn btn-xs btn-danger t-m-10">置顶</button>
-                            </div>
-                            <div class="pull-right">
-                                <span>回复数：10</span>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="">我有一本PHP的书籍</a>
-                            <div class="pull-left">
-                                <button type="button" class="btn btn-xs btn-success t-m-10">精华</button>
-                            </div>
-                            <div class="pull-right">
-                                <span>回复数：10</span>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="">我有一本PHP的书籍</a>
-                            <div class="pull-left">
-                                <button type="button" class="btn btn-xs btn-default t-m-10">普通</button>
-                            </div>
-                            <div class="pull-right">
-                                <span>回复数：10</span>
-                            </div>
-                        </li>
+                        @forelse($post as $p)
+                            <li class="list-group-item">
+                                <a href="">{{ $p->title }}</a>
+                                <div class="pull-left">
+                                    @if($p->is_top == 1)
+                                        <button type="button" class="btn btn-xs btn-danger t-m-10">置顶</button>
+                                    @endif
+                                    @if($p->is_essence == 2)
+                                        <button type="button" class="btn btn-xs btn-success t-m-10">精华</button>
+                                    @endif
+                                    @if($p->is_top==0 && $p->is_essence==1)
+                                        <button type="button" class="btn btn-xs btn-default t-m-10">普通</button>
+                                    @endif
+                                </div>
+                                <div class="pull-right">
+                                    <span>回复数：10</span>
+                                </div>
+                            </li>
+                        @empty
+                            123
+                        @endforelse
                     </ul>
                 </div>
 
