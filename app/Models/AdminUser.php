@@ -4,14 +4,35 @@ namespace App\Models;
 
 use App\Libraries\AdminMessage;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
+use Zizaco\Entrust\Traits\EntrustUserTrait;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class AdminUser extends Base
+class AdminUser extends Authenticatable
 {
 
-    use SoftDeletes;
     protected $table = 'admin_user';
 
+    use Notifiable, SoftDeletes;
+    use EntrustUserTrait; // add this trait to your user model
+    protected $hidden = ['password', 'remember_token'];
+
+    /**
+     * 解决 EntrustUserTrait 和 SoftDeletes 冲突
+     */
+    public function restore()
+    {
+        $this->restoreEntrust();
+        $this->restoreSoftDelete();
+    }
+    public function roleUser(){
+        return $this->hasMany('App\Models\RoleUser','user_id','id');
+    }
+    public function rolesDetail()
+    {
+        return $this->belongsToMany('App\Models\Role', 'role_user', 'user_id');
+    }
     public function storeData($data)
     {
         try{

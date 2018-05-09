@@ -29,6 +29,7 @@ class PersonalController extends Controller
         $postService->release($request);
         return redirect('home/personal/index');
     }
+
     public function uploadImg()
     {
         $result = upload('editormd-image-file', 'uploads/post');
