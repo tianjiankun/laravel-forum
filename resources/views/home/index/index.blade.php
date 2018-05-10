@@ -16,47 +16,26 @@
             <div class="post-preview">
                 <div class="panel-body t-p-0">
                     <ul class="list-group">
-                        <li class="list-group-item">
-                            <a href="">我有一本PHP的书籍</a>
-                            <div class="pull-left">
-                                <button type="button" class="btn btn-xs btn-danger t-m-10">置顶</button>
-                            </div>
-                            <div class="pull-right">
-                                <span>回复数：10</span>
-                                <span>作者：tianjiankun</span>
-                            </div>
-                        </li>
-
-                        <li class="list-group-item">
-                            <a href="">我有一本PHP的书籍</a>
-                            <div class="pull-left">
-                                <button type="button" class="btn btn-xs btn-success t-m-10">精华</button>
-                            </div>
-                            <div class="pull-right">
-                                <span>回复数：10</span>
-                                <span>作者：tianjiankun</span>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="">我有一本PHP的书籍</a>
-                            <div class="pull-left">
-                                <button type="button" class="btn btn-xs btn-default t-m-10">普通</button>
-                            </div>
-                            <div class="pull-right">
-                                <span>回复数：10</span>
-                                <span>作者：tianjiankun</span>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="">我有一本PHP的书籍</a>
-                            <div class="pull-left">
-                                <button type="button" class="btn btn-xs btn-default t-m-10">普通</button>
-                            </div>
-                            <div class="pull-right">
-                                <span>回复数：10</span>
-                                <span>作者：tianjiankun</span>
-                            </div>
-                        </li>
+                        @foreach($list as $v)
+                            <li class="list-group-item">
+                                <a href="">{{ $v->title }}</a>
+                                <div class="pull-left">
+                                    @if($v->is_top == 1)
+                                        <button type="button" class="btn btn-xs btn-danger t-m-10">置顶</button>
+                                    @endif
+                                    @if($v->is_essence == 2)
+                                        <button type="button" class="btn btn-xs btn-success t-m-10">精华</button>
+                                    @endif
+                                    @if($v->is_top==0 && $v->is_essence==1)
+                                        <button type="button" class="btn btn-xs btn-default t-m-10">普通</button>
+                                    @endif
+                                </div>
+                                <div class="pull-right">
+                                    <span>回复数：10</span>
+                                    <span>作者: {{ $v->user->nickname }}</span>
+                                </div>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>

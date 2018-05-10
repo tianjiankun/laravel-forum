@@ -46,4 +46,32 @@ class PostService
             ->sortByDesc('is_top');
         return $post;
     }
+
+    /**
+     * @param string $filter
+     * @return Post
+     */
+    public function getPostListWithFilter($filter)
+    {
+        $filter = $this->getPostFilter($filter);
+        $post= Post::with('user')
+            ->orderBy('sort', 'asc');
+        if ($filter == 'essence') {
+            $post->where('is_essence', 1);
+        }
+        $list = $post->paginate();
+        if ($filter == 'default') {
+            $list = $list->sortByDesc('is_essence')
+                ->sortByDesc('is_top');
+        }
+        return $list;
+    }
+
+    private function getPostFilter($request_filter)
+    {
+        $filter = ['essence', 'recent'];
+        return in_array($request_filter, $filter) ? $request_filter : 'default';
+    }
+
+
 }

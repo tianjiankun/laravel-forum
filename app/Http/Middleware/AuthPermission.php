@@ -42,7 +42,8 @@ class AuthPermission
     {
         $route = $request->route()->getName();
         if (!Auth::guard('admin')->user()->can($route)) {  //判断登录用户权限
-            abort(404);
+            flash_message('权限不足');
+            return redirect(route('admin'));
         }
 
         return $next($request);

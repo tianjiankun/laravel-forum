@@ -19,39 +19,47 @@ Route::group(['namespace'=>'Home'], function (){
     Route::post('/personal/uploadImg', 'PersonalController@uploadImg');
 });
 
+
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admin.auth'], function (){
-    Route::group(['middleware' => 'admin.permission'], function () {
-        Route::get('/', 'IndexController@index')->name('admin');
-    });
-    Route::group(['prefix' => 'admin_user'], function (){
-        Route::get('/list', 'AdminUserController@index');
-        Route::get('/add', 'AdminUserController@add');
-        Route::post('/store', 'AdminUserController@store');
-        Route::get('/edit/{id}', 'AdminUserController@edit');
-        Route::post('/update/{id}', 'AdminUserController@update');
-        Route::get('/delete/{id}', 'AdminUserController@delete');
-        Route::get('/restore/{id}', 'AdminUserController@restore');
-        Route::get('/force_delete/{id}', 'AdminUserController@forceDelete');
-    });
-    Route::group(['prefix' => 'category'], function (){
-        Route::get('/list', 'CategoryController@index');
-        Route::get('/add', 'CategoryController@add');
-        Route::post('/store', 'CategoryController@store');
-        Route::get('/edit/{id}', 'CategoryController@edit');
-        Route::post('/update/{id}', 'CategoryController@update');
-        Route::get('/delete/{id}', 'CategoryController@delete');
-        Route::get('/restore/{id}', 'CategoryController@restore');
-        Route::get('/force_delete/{id}', 'CategoryController@forceDelete');
-        Route::post('/sort', 'CategoryController@sort');
-    });
-    Route::group(['prefix' => 'post'], function (){
-        Route::get('/list', 'PostController@index');
-        Route::get('/top/{id}', 'PostController@top');
-        Route::get('/essence/{id}', 'PostController@essence');
-        Route::get('/delete/{id}', 'PostController@delete');
-    });
-    Route::get('/login', 'LoginController@login');
+    Route::get('/', 'IndexController@index')->name('admin');
+        Route::group(['prefix' => 'admin_user'], function (){
+            Route::get('/list', 'AdminUserController@index')
+                ->name('admin_user.list');
+            Route::get('/add', 'AdminUserController@add')
+                ->name('admin_user.add');
+            Route::post('/store', 'AdminUserController@store')
+                ->name('admin_user.store');
+            Route::get('/edit/{id}', 'AdminUserController@edit')
+                ->name('admin_user.edit');
+            Route::post('/update/{id}', 'AdminUserController@update')
+                ->name('admin_user.update');
+            Route::get('/delete/{id}', 'AdminUserController@delete')
+                ->name('admin_user.delete');
+            Route::get('/restore/{id}', 'AdminUserController@restore')
+                ->name('admin_user.restore');
+            Route::get('/force_delete/{id}', 'AdminUserController@forceDelete')
+                ->name('admin_user.force_delete');
+        });
+        Route::group(['prefix' => 'category'], function (){
+            Route::get('/list', 'CategoryController@index');
+            Route::get('/add', 'CategoryController@add');
+            Route::post('/store', 'CategoryController@store');
+            Route::get('/edit/{id}', 'CategoryController@edit');
+            Route::post('/update/{id}', 'CategoryController@update');
+            Route::get('/delete/{id}', 'CategoryController@delete');
+            Route::get('/restore/{id}', 'CategoryController@restore');
+            Route::get('/force_delete/{id}', 'CategoryController@forceDelete');
+            Route::post('/sort', 'CategoryController@sort');
+        });
+        Route::group(['prefix' => 'post'], function (){
+            Route::get('/list', 'PostController@index');
+            Route::get('/top/{id}', 'PostController@top');
+            Route::get('/essence/{id}', 'PostController@essence');
+            Route::get('/delete/{id}', 'PostController@delete');
+        });
 });
+
+
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function (){
     Route::get('/login', 'LoginController@index');
 });

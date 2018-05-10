@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Service\Post\PostService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class IndexController extends Controller
 {
     //
-    public function index()
+    public function index(Request $request, PostService $postService)
     {
-        $cid = 'index';
-        $assign = compact('cid');
+        $filter = $request->input('filter');
+        $cid  = 'index';
+        $list = $postService->getPostListWithFilter($filter);
+        $assign = compact('cid', 'list');
         return view('home.index.index', $assign);
     }
 
