@@ -1,6 +1,7 @@
 <?php
 namespace App\Service\Post;
 
+use App\Models\Category;
 use App\Models\Post;
 use App\Models\PostContent;
 use Illuminate\Http\Request;
@@ -49,13 +50,17 @@ class PostService
 
     /**
      * @param string $filter
+     * @param string $cid
      * @return Post
      */
-    public function getPostListWithFilter($filter)
+    public function getPostListWithFilterByCid($filter, $cid)
     {
         $filter = $this->getPostFilter($filter);
         $post= Post::with('user')
             ->orderBy('sort', 'asc');
+        if ($cid != 'index') {
+            $post->where('category_id', $cid);
+        }
         if ($filter == 'essence') {
             $post->where('is_essence', 1);
         }
@@ -72,6 +77,4 @@ class PostService
         $filter = ['essence', 'recent'];
         return in_array($request_filter, $filter) ? $request_filter : 'default';
     }
-
-
 }

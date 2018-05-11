@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Http\Controllers\Controller;
 use App\Service\Post\PostService;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class IndexController extends Controller
 {
@@ -13,13 +13,17 @@ class IndexController extends Controller
     {
         $filter = $request->input('filter');
         $cid  = 'index';
-        $list = $postService->getPostListWithFilter($filter);
+        $list = $postService->getPostListWithFilterByCid($filter, $cid);
         $assign = compact('cid', 'list');
         return view('home.index.index', $assign);
     }
 
-    public function category(Request $request)
+    public function category(Request $request, PostService $postService)
     {
-        return view('home.index.index');
+        $filter = $request->input('filter');
+        $cid = $request->input('cid');
+        $list = $postService->getPostListWithFilterByCid($filter, $cid);
+        $assign = compact('list');
+        return view('home.index.index', $assign);
     }
 }

@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Models\Category;
-use App\Models\User;
+use App\Http\ViewComposers\Home;
+use App\Http\ViewComposers\HomeIndex;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -15,17 +15,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer('home/*', function($view) {
-            $category = Category::select('id', 'name')
-                ->get();
-            $assign = [
-                'category' => $category
-            ];
-            $view->with($assign);
-        });
-        view()->composer('personal/*', function($view) {
-//            $user = User::where
-        });
+        view()->composer('home/*', Home::class);
+        view()->composer('home/index/*', HomeIndex::class);
     }
 
     /**

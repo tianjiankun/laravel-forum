@@ -58,12 +58,9 @@
             </div>
             <div class="panel-body">
                 <ul class="">
-                    <li><a href="">来学PHP吧</a></li>
-                    <li><a href="">来学PHP吧</a></li>
-                    <li><a href="">来学PHP吧</a></li>
-                    <li><a href="">来学PHP吧</a></li>
-                    <li><a href="">来学PHP吧</a></li>
-                    <li><a href="">来学PHP吧</a></li>
+                    @foreach($hot as $h)
+                        <li><a href="">{{ $h->title }}</a></li>
+                    @endforeach
                 </ul>
             </div>
         </div>
