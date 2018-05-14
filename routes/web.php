@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 Route::group(['namespace'=>'Home'], function (){
     Route::get('/', 'IndexController@index');
     Route::get('/category', 'IndexController@category');
@@ -68,4 +69,6 @@ Route::group(['namespace' => 'Auth', 'prefix' => 'auth'], function () {
     Route::group(['prefix' => 'admin'], function () {
         Route::post('login', 'AdminController@login');
     });
+    // 前台用户登录
+    Route::post('login', 'LoginController@login');
 });

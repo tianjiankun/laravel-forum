@@ -2,14 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class User extends Base
+
+class User extends Authenticatable
 {
     //
     protected $table = 'user';
-    use SoftDeletes;
+    use Notifiable, SoftDeletes;
+    protected $hidden = ['password'];
 
     public function post()
     {
