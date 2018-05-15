@@ -18,6 +18,7 @@ Route::group(['namespace'=>'Home'], function (){
     Route::get('/personal/release', 'PersonalController@release');
     Route::post('/personal/releaseHandle', 'PersonalController@releaseHandle');
     Route::post('/personal/uploadImg', 'PersonalController@uploadImg');
+    Route::get('/post/show/{id}', 'PostController@show');
 });
 
 

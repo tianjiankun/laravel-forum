@@ -10,4 +10,9 @@ class PostContent extends Base
     //
     protected $table = 'post_content';
     use SoftDeletes;
+
+    public function getContentAttribute($v)
+    {
+        return markdown_to_html($v);
+    }
 }
