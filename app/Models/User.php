@@ -11,6 +11,7 @@ class User extends Authenticatable
 {
     //
     protected $table = 'user';
+    protected $rememberTokenName = '';
     use Notifiable, SoftDeletes;
     protected $hidden = ['password'];
 

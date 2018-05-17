@@ -18,7 +18,7 @@
                     <ul class="list-group">
                         @foreach($list as $v)
                             <li class="list-group-item">
-                                <a href="">{{ $v->title }}</a>
+                                <a href="{{ route('post.show', [$v->id]) }}">{{ $v->title }}</a>
                                 <div class="pull-left">
                                     @if($v->is_top == 1)
                                         <button type="button" class="btn btn-xs btn-danger t-m-10">置顶</button>

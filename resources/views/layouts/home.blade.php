@@ -27,13 +27,17 @@
                 @endforeach
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <a href="{{ route('login') }}" class="btn btn-default nav-btn">登录</a>
-                <a href="{{ url('/personal') }}" class="btn btn-default nav-btn">个人中心</a>
+                @if(Auth::id())
+                    <a href="{{ route('logout') }}" class="btn btn-default nav-btn">退出登录</a>
+                    <a href="{{ url('/personal') }}" class="btn btn-default nav-btn">个人中心</a>
+                @else
+                    <a href="{{ route('login') }}" class="btn btn-default nav-btn">登录</a>
+                    <a href="{{ route('login') }}" class="btn btn-default nav-btn">注册</a>
+                @endif
             </ul>
         </div>
     </div>
 </header>
-
 <div class="container m-t-100">
     <div class="row">
     @yield('content')

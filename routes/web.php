@@ -14,11 +14,14 @@ Auth::routes();
 Route::group(['namespace'=>'Home'], function (){
     Route::get('/', 'IndexController@index');
     Route::get('/category', 'IndexController@category');
-    Route::get('/personal', 'PersonalController@personal');
-    Route::get('/personal/release', 'PersonalController@release');
-    Route::post('/personal/releaseHandle', 'PersonalController@releaseHandle');
-    Route::post('/personal/uploadImg', 'PersonalController@uploadImg');
-    Route::get('/post/show/{id}', 'PostController@show');
+    Route::get('/post/show/{id}', 'PostController@show')->name('post.show');
+    //需要登录才能访问的页面
+    Route::group(['middleware'=>'auth'], function() {
+        Route::get('/personal', 'PersonalController@personal');
+        Route::get('/personal/release', 'PersonalController@release');
+        Route::post('/personal/releaseHandle', 'PersonalController@releaseHandle');
+        Route::post('/personal/uploadImg', 'PersonalController@uploadImg');
+    });
 });
 
 
@@ -73,3 +76,9 @@ Route::group(['namespace' => 'Auth', 'prefix' => 'auth'], function () {
     // 前台用户登录
     Route::post('login', 'LoginController@login');
 });
+Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+//
+//Route::get('logout', function() {
+//    Auth::logout();
+//    return redirect('/');
+//});
