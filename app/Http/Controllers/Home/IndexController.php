@@ -12,18 +12,19 @@ class IndexController extends Controller
     public function index(Request $request, PostService $postService)
     {
         $filter = $request->input('filter');
+        $uri = $request->url();
         $cid  = 'index';
         $list = $postService->getPostListWithFilterByCid($filter, $cid);
-        $assign = compact('cid', 'list');
+        $assign = compact('cid', 'list', 'uri');
         return view('home.index.index', $assign);
     }
 
-    public function category(Request $request, PostService $postService)
+    public function category($cid, Request $request, PostService $postService)
     {
         $filter = $request->input('filter');
-        $cid = $request->input('cid');
+        $uri = $request->url();
         $list = $postService->getPostListWithFilterByCid($filter, $cid);
-        $assign = compact('list');
+        $assign = compact('cid', 'list', 'uri');
         return view('home.index.index', $assign);
     }
 }

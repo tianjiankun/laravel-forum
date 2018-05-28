@@ -13,8 +13,10 @@ class HomeIndex
     public function compose(View $view)
     {
         $hot = $this->hot();
+        $filter = $this->filter();
         $assign = [
             'hot' => $hot,
+            'filter' => $filter,
         ];
         $view->with($assign);
     }
@@ -35,5 +37,17 @@ class HomeIndex
             ->limit(10)
             ->get();
         return $hot;
+    }
+
+    /**
+     * 精华、最近等按钮
+     */
+    private function filter()
+    {
+        return [
+            ['id'=>1,'filter'=>'default', 'name'=>'普通'],
+            ['id'=>2,'filter'=>'essence', 'name'=>'精华'],
+            ['id'=>3,'filter'=>'recent', 'name'=>'最近'],
+        ];
     }
 }

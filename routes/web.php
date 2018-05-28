@@ -13,7 +13,7 @@
 Auth::routes();
 Route::group(['namespace'=>'Home'], function (){
     Route::get('/', 'IndexController@index');
-    Route::get('/category', 'IndexController@category');
+    Route::get('/category/cid/{cid}', 'IndexController@category');
     Route::get('/post/show/{id}', 'PostController@show')->name('post.show');
     //需要登录才能访问的页面
     Route::group(['middleware'=>'auth'], function() {

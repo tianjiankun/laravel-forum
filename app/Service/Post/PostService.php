@@ -62,7 +62,7 @@ class PostService
             $post->where('category_id', $cid);
         }
         if ($filter == 'essence') {
-            $post->where('is_essence', 1);
+            $post->where('is_essence', 2);
         }
         $list = $post->paginate();
         if ($filter == 'default') {

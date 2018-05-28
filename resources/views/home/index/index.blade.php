@@ -8,9 +8,13 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <ul class="list-inline">
-                    <li><a  id="test" href="#" class="action">普通</a></li>
-                    <li><a href="">精华</a></li>
-                    <li><a href="">最近</a></li>
+                    @foreach($filter as $f)
+                    <li>
+                        <a href="{{ $uri. '?filter='.$f['filter'] }}"
+                           class="btn btn-default @if($f['filter'] == $app->request->input('filter')) active @endif"
+                        >{{ $f['name'] }}</a>
+                    </li>
+                    @endforeach
                 </ul>
             </div>
             <div class="post-preview">
