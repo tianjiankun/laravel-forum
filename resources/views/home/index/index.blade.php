@@ -57,11 +57,13 @@
                 七天内最热
             </div>
             <div class="panel-body">
-                <ul class="">
+                <ol class="">
                     @foreach($hot as $h)
-                        <li><a href="">{{ $h->title }}</a></li>
+                        <li>
+                            <a href="{{ route('post.show', [$h->id]) }}">{{ $h->title }}</a>
+                        </li>
                     @endforeach
-                </ul>
+                </ol>
             </div>
         </div>
     </div>
