@@ -27,7 +27,7 @@ class PersonalController extends Controller
     public function releaseHandle(Request $request, PostService $postService)
     {
         $postService->release($request);
-        return redirect('home/personal/index');
+        return redirect(route('personal'));
     }
 
     public function uploadImg()

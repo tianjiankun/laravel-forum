@@ -15,7 +15,7 @@ class PostService
     public function release(Request $request)
     {
         try {
-            $post = new Post;
+            $post = new Post();
             $postContent = new PostContent();
             $content = $request->input('content');
             $post->category_id = $request->input('category_id');
@@ -31,6 +31,7 @@ class PostService
             flash_message('发帖成功');
         } catch (\Throwable $e) {
             echo  $e->getMessage();
+            die;
         }
     }
 

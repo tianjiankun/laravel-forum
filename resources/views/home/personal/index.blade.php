@@ -34,7 +34,9 @@
                                 </div>
                             </li>
                         @empty
-                            123
+                            <li class="list-group-item">
+                                暂无
+                            </li>
                         @endforelse
                     </ul>
                 </div>

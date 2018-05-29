@@ -6,7 +6,7 @@
 @section('content')
     @include('home.personal.sidebar')
     <div class="col-md-9">
-        <form class="form-horizontal " action="{{ url('personal/releaseHandle') }}" method="post">
+        <form class="form-horizontal " action="{{ route('personal.release.handle') }}" method="post">
             {{ csrf_field() }}
             <tr>
                 <td>
