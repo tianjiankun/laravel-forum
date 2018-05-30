@@ -18,9 +18,9 @@ class Post extends Base
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function reply()
+    public function comment()
     {
-        return $this->hasMany(Reply::class,'post_id', 'id');
+        return $this->hasMany(PostComment::class,'post_id', 'id');
     }
 
     public function content()

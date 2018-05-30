@@ -10,9 +10,10 @@ class PostController
 {
     public function show($id)
     {
-        $data = Post::with('content')
+        $post = Post::with('content', 'comment', 'comment.user')
             ->find($id);
-        $assign = compact('data');
+        $post->increment('view_count', 1);
+        $assign = compact('post');
         return view('home.post.show', $assign);
     }
 }
