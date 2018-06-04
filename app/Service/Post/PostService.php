@@ -39,9 +39,10 @@ class PostService
      * @param int $n
      * @return Post
      */
-    public function getUserPost($n = null)
+    public function getUserPost($n = 15)
     {
-        $post = Post::where('user_id', Auth::id())
+        $post = Post::with('comment')
+            ->where('user_id', Auth::id())
             ->orderBy('created_at', 'desc')
             ->paginate($n)
             ->sortByDesc('is_essence')

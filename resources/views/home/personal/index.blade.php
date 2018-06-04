@@ -17,7 +17,7 @@
                     <ul class="list-group">
                         @forelse($post as $p)
                             <li class="list-group-item">
-                                <a href="">{{ $p->title }}</a>
+                                <a href="{{ route('post.show', [$p->id]) }}">{{ $p->title }}</a>
                                 <div class="pull-left">
                                     @if($p->is_top == 1)
                                         <button type="button" class="btn btn-xs btn-danger t-m-10">置顶</button>
@@ -30,7 +30,7 @@
                                     @endif
                                 </div>
                                 <div class="pull-right">
-                                    <span>回复数：10</span>
+                                    <span>回复数：{{ $p->comment->count() }}</span>
                                 </div>
                             </li>
                         @empty

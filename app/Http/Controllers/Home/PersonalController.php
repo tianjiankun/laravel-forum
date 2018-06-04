@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Models\Post;
 use App\Service\Post\PostService;
 use App\Service\User\UserService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class PersonalController extends Controller
 {
@@ -28,6 +30,17 @@ class PersonalController extends Controller
     {
         $postService->release($request);
         return redirect(route('personal'));
+    }
+
+    public function postList()
+    {
+        $list = Post::with('comment')
+            ->where('user_id', Auth::id())
+            ->orderBy('created_at', 'desc')
+            ->paginate();
+        $assign = compact('list');
+
+        return view('home.personal.postList', $assign);
     }
 
     public function uploadImg()
