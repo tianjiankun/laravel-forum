@@ -48,7 +48,7 @@
                             <div class="pull-left">
                                 <a href="">
                                     <img class="img-thumbnail"
-                                         src="用户头像"
+                                         src="{{ $c->user->info->img }}"
                                          style="width:55px;height:55px;">
                                 </a>
                                 <div class="text-center">
@@ -74,15 +74,14 @@
         </div>
         <div class="panel panel-default">
             <div class="panel-body">
-                <form action="">
+                <form action="{{ route('post.comment', [$post->id]) }}" method="post">
+                    {{ csrf_field() }}
                     <div class="form-group">
                         <textarea class="form-control"
                                   @if(! Auth::check())disabled="disabled"@endif
                                   rows="5" placeholder="需要登录后才能发表评论"
-                                  name="body" cols="50" style="overflow: hidden; word-wrap: break-word;
-                                  resize: horizontal; height: 164px;">
-
-                        </textarea>
+                                  name="content" cols="50" style="overflow: hidden; word-wrap: break-word;
+                                  resize: horizontal; height: 164px;"></textarea>
                     </div>
                     <div class="form-group">
                         <div class="pull-right">

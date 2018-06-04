@@ -19,4 +19,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class, 'user_id', 'id');
     }
+
+    public function info()
+    {
+        return $this->hasOne(UserInfo::class, 'user_id', 'id');
+    }
 }
