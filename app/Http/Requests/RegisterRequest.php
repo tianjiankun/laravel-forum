@@ -25,7 +25,7 @@ class RegisterRequest extends FormRequest
     {
         return [
             'nickname'=>'required|unique:user',
-            'phone'=>'required|unique:user',
+            'mobile'=>'required|unique:user',
             'password'=>'required',
         ];
     }

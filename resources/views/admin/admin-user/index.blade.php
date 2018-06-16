@@ -23,7 +23,7 @@
                     <td>{{ $v->id }}</td>
                     <td>{{ $v->login_name }}</td>
                     <td>{{ $v->real_name }}</td>
-                    <td>{{ $v->phone }}</td>
+                    <td>{{ $v->mobile }}</td>
                     <td>
                         <a href="{{ url('admin/admin_user/edit', [$v->id]) }}" class="btn btn-primary btn-xs">编辑</a> |
                         @if(is_null($v->deleted_at))

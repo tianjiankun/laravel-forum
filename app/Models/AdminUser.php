@@ -37,7 +37,7 @@ class AdminUser extends Authenticatable
         try{
             $this->login_name = $data['login_name'];
             $this->real_name  = $data['real_name'];
-            $this->phone      = $data['phone'];
+            $this->mobile      = $data['mobile'];
             $this->password   = bcrypt($data['password']);
             $this->save();
             flash_message(AdminMessage::ADD);
@@ -52,7 +52,7 @@ class AdminUser extends Authenticatable
             $admin = $this->find($id);
             $admin->login_name = $data['login_name'];
             $admin->real_name = $data['real_name'];
-            $admin->phone = $data['phone'];
+            $admin->mobile = $data['mobile'];
             if (!empty($data['password'])) {//密码留空表示不修改
                 $admin->password = bcrypt($data['password']);
             }

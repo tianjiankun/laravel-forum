@@ -40,7 +40,7 @@
     昵称:
     <input type="text" name="nickname">
     手机号:
-    <input type="text" name="phone">
+    <input type="text" name="mobile">
     密码:
     <input type="password" name="password">
     <button type="submit">注册</button>

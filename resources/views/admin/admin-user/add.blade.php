@@ -28,7 +28,7 @@
             <tr>
                 <th>手机号</th>
                 <td>
-                    <input class="form-control" type="text" name="phone" value="{{ old('phone') }}">
+                    <input class="form-control" type="text" name="mobile" value="{{ old('mobile') }}">
                 </td>
             </tr>
             <tr>

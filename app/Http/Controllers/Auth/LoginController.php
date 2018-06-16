@@ -44,7 +44,7 @@ class LoginController extends Controller
 
     public function username()
     {
-        return "phone";
+        return "mobile";
     }
 
     public function logout()
@@ -57,7 +57,7 @@ class LoginController extends Controller
     {
         $user = new User();
         $user->nickname=$request->input('nickname');
-        $user->phone=$request->input('phone');
+        $user->mobile=$request->input('mobile');
         $user->password=bcrypt($request->input('password'));
         $user->save();
         $this->login($request);
