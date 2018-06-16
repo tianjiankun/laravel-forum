@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RegisterRequest;
+use App\Models\User;
+use GuzzleHttp\Client;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -47,5 +51,17 @@ class LoginController extends Controller
     {
         Auth::logout();
         return redirect('/');
+    }
+
+    public function register(RegisterRequest $request)
+    {
+        $user = new User();
+        $user->nickname=$request->input('nickname');
+        $user->phone=$request->input('phone');
+        $user->password=bcrypt($request->input('password'));
+        $user->save();
+        $this->login($request);
+        return redirect(route('home'));
+
     }
 }

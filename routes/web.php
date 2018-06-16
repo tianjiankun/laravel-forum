@@ -12,7 +12,7 @@
 */
 Auth::routes();
 Route::group(['namespace'=>'Home'], function (){
-    Route::get('/', 'IndexController@index');
+    Route::get('/', 'IndexController@index')->name('home');
     Route::get('/category/cid/{cid}', 'IndexController@category');
     Route::get('/post/show/{id}', 'PostController@show')->name('post.show');
     Route::post('/post/comment/{id}', 'PostController@comment')->name('post.comment');
@@ -77,10 +77,6 @@ Route::group(['namespace' => 'Auth', 'prefix' => 'auth'], function () {
     });
     // 前台用户登录
     Route::post('login', 'LoginController@login');
+    Route::post('register', 'LoginController@register');
 });
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
-//
-//Route::get('logout', function() {
-//    Auth::logout();
-//    return redirect('/');
-//});
