@@ -50,6 +50,18 @@ class PostService
         return $post;
     }
 
+    public function getUserReply($n = 15)
+    {
+        $post = Post::with('comment')
+            ->whereHas('comment', function($query){
+                $query->where('user_id', Auth::id());
+            })
+            ->orderBy('created_at', 'desc')
+            ->paginate($n)
+            ->sortByDesc('is_essence')
+            ->sortByDesc('is_top');
+        return $post;
+    }
     /**
      * @param string $filter
      * @param string $cid

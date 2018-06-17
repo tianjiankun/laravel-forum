@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Home;
 
 use App\Models\Post;
+use App\Models\PostComment;
 use App\Service\Post\PostService;
 use App\Service\User\UserService;
 use Illuminate\Http\Request;
@@ -15,11 +16,13 @@ class PersonalController extends Controller
     public function personal(PostService $postService)
     {
         $post = $postService->getUserPost(3);
-        return view('home.personal.index',[
-            'post' => $post
+        $reply = $postService->getUserReply(3);
+        return view('home.personal.index', [
+            'post' => $post,
+            'reply' => $reply
         ]);
     }
-    
+
     //发帖页面
     public function release()
     {
@@ -50,7 +53,7 @@ class PersonalController extends Controller
             $data = [
                 'success' => 1,
                 'message' => $result['message'],
-                'url' => $result['data']['path'].$result['data']['new_name']
+                'url' => $result['data']['path'] . $result['data']['new_name']
             ];
         } else {
             $data = [
@@ -60,5 +63,15 @@ class PersonalController extends Controller
             ];
         }
         return response()->json($data);
+    }
+
+    public function replyList()
+    {
+        $list = Post::with('comment')
+            ->whereHas('comment', function ($query) {
+                $query->where('user_id', Auth::id());
+            })->paginate();
+        $assign = compact('list');
+        return view('home.personal.replyList', $assign);
     }
 }

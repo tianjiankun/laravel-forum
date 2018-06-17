@@ -9,13 +9,13 @@
             <div class="panel-heading text-center">
                 <div>
                     <i class="fa fa-ravelry" aria-hidden="true"></i>
-                    最近发布的帖子
+                    我回复的帖子
                 </div>
             </div>
             <div class="panel-body" style="padding: 0px">
                 <div class="">
                     <ul class="list-group">
-                        @forelse($post as $p)
+                        @forelse($list as $p)
                             <li class="list-group-item">
                                 <a href="{{ route('post.show', [$p->id]) }}">{{ $p->title }}</a>
                                 <div class="pull-left">
@@ -40,33 +40,8 @@
                         @endforelse
                     </ul>
                 </div>
-
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading text-center">
-                <div class="">
-                    <i class="fa fa-handshake-o" aria-hidden="true"></i>
-                    最近回复的帖子
-                </div>
-            </div>
-            <div class="panel-body t-p-0">
-                <div class="">
-                    <ul class="list-group">
-                        @forelse($reply as $r)
-                            <li class="list-group-item">
-                                <a href="">{{ $r->title }}</a>
-                                <div class="pull-left">
-                                    <button type="button" class="btn btn-xs btn-danger t-m-10">置顶</button>
-                                </div>
-                                <div class="pull-right">
-                                    <span>回复数：{{ $r->comment->count() }}</span>
-                                </div>
-                            </li>
-                        @empty
-                        @endforelse
-
-                    </ul>
+                <div class="text-center">
+                    {{ $list->appends($app->request->all())->links() }}
                 </div>
 
             </div>

@@ -35,14 +35,14 @@
                     </li>
                 </a>
                 <hr class="no-margin">
-                <a href="{{ url(route('personal.post.list')) }}" class="person-list-font">
+                <a href="{{ route('personal.post.list') }}" class="person-list-font">
                     <li class="list-group-item person-list">
                         <i class="text-md fa fa-file margin-3"></i>
                         查看我的帖子
                     </li>
                 </a>
                 <hr class="no-margin">
-                <a href="" class="person-list-font">
+                <a href="{{ route('personal.reply.list') }}" class="person-list-font">
                     <li class="list-group-item person-list">
                         <i class="text-md fa fa-comment margin-2"></i>
                         我回复的帖子

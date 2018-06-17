@@ -20,8 +20,12 @@ Route::group(['namespace'=>'Home'], function (){
     Route::group(['middleware'=>'auth'], function() {
         Route::get('/personal', 'PersonalController@personal')->name('personal');
         Route::get('/personal/release', 'PersonalController@release');
-        Route::get('/personal/post/list', 'PersonalController@postList')->name('personal.post.list');
-        Route::post('/personal/releaseHandle', 'PersonalController@releaseHandle')->name('personal.release.handle');
+        Route::get('/personal/post/list', 'PersonalController@postList')
+            ->name('personal.post.list');
+        Route::get('/personal/reply/list', 'PersonalController@replyList')
+            ->name('personal.reply.list');
+        Route::post('/personal/releaseHandle', 'PersonalController@releaseHandle')
+            ->name('personal.release.handle');
         Route::post('/personal/uploadImg', 'PersonalController@uploadImg');
     });
 });
