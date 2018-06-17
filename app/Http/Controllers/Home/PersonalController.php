@@ -17,10 +17,8 @@ class PersonalController extends Controller
     {
         $post = $postService->getUserPost(3);
         $reply = $postService->getUserReply(3);
-        return view('home.personal.index', [
-            'post' => $post,
-            'reply' => $reply
-        ]);
+        $assign = compact('post', $reply);
+        return view('home.personal.index', $assign);
     }
 
     //发帖页面
