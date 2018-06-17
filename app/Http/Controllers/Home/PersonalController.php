@@ -17,7 +17,7 @@ class PersonalController extends Controller
     {
         $post = $postService->getUserPost(3);
         $reply = $postService->getUserReply(3);
-        $assign = compact('post', $reply);
+        $assign = compact('post', 'reply');
         return view('home.personal.index', $assign);
     }
 
