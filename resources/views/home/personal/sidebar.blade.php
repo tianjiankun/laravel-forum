@@ -2,7 +2,7 @@
 <div class="col-md-3">
     <div class="panel panel-default">
         <div class="panel-heading text-center">
-            <h4>昵称：tianjiankun</h4>
+            <h4>昵称：{{ $user->nickname }}</h4>
         </div>
         <div class="panel-body">
             <div>
@@ -11,11 +11,11 @@
                     <a href="" class="text">粉丝</a>
                 </div>
                 <div class="col-xs-4">
-                    <a href="" class="counter">0</a>
+                    <a href="" class="counter">{{ $user->post->count() }}</a>
                     <a href="" class="text">帖子</a>
                 </div>
                 <div class="col-xs-4">
-                    <a href="" class="counter">0</a>
+                    <a href="" class="counter">{{ $user->comment->count() }}</a>
                     <a href="" class="text">回帖</a>
                 </div>
             </div>

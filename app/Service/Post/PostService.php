@@ -58,7 +58,7 @@ class PostService
     public function getPostListWithFilterByCid($filter, $cid)
     {
         $filter = $this->getPostFilter($filter);
-        $post= Post::with('user')
+        $post= Post::with('user', 'comment')
             ->orderBy('sort', 'asc');
         if ($cid != 'index') {
             $post->where('category_id', $cid);

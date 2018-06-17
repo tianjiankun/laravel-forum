@@ -35,7 +35,7 @@
                                     @endif
                                 </div>
                                 <div class="pull-right">
-                                    <span>回复数：10</span>
+                                    <span>回复数：{{ $v->comment->count() }}</span>
                                     <span>作者: {{ $v->user->nickname }}</span>
                                 </div>
                             </li>
