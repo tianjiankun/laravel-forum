@@ -50,8 +50,8 @@
     <div class="col-md-3 side-bar">
         <div class="panel panel-default">
             <div class="panel-body">
-                <form action="" class="form-inline">
-                    <input type="text" style="float: left">
+                <form action="{{ route('home') }}" class="form-inline">
+                    <input type="text" value="{{ Request::get('search') }}" name="search" style="float: left">
                     <input type="submit" class="btn btn-primary" style="float: left">
                 </form>
             </div>

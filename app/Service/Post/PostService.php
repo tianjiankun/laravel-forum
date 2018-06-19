@@ -63,12 +63,14 @@ class PostService
         return $post;
     }
     /**
-     * @param string $filter
+     * @param Request $request
      * @param string $cid
      * @return Post
      */
-    public function getPostListWithFilterByCid($filter, $cid)
+    public function getPostListWithFilterByCid(Request $request, $cid)
     {
+        $filter = $request->input('filter');
+        $search = $request->input('search');
         $filter = $this->getPostFilter($filter);
         $post= Post::with('user', 'comment')
             ->orderBy('sort', 'asc');
@@ -77,6 +79,9 @@ class PostService
         }
         if ($filter == 'essence') {
             $post->where('is_essence', 2);
+        }
+        if ($search) {
+            $post->where('title', 'like', "%$search%");
         }
         $list = $post->paginate();
         if ($filter == 'default') {
